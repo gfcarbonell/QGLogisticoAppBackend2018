@@ -42,6 +42,11 @@ INSTALLED_APPS = [
 INSTALLED_SYSTEM_APPS = [
     #User Structure
     'auth_users.apps.AuthUsersConfig',
+    'auth_user_profiles.apps.AuthUserProfilesConfig',
+    #Person Structure
+    'persons.apps.PersonsConfig',
+    'contact_information.apps.ContactInformationConfig',
+    'extra_information.apps.ExtraInformationConfig',
 ]
 
 INSTALLED_SYSTEM_THIRD = [
