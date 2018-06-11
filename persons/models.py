@@ -70,7 +70,7 @@ class Person(models.Model):
         help_text='Blood group | Grupo sanguíneo'
     )  
     photography = models.ImageField(
-        upload_to='image/persons/', 
+        upload_to='images/persons/', 
         null=True, 
         blank=True,
         default=None, 

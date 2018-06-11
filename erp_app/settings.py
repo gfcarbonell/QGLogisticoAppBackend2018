@@ -40,6 +40,12 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_SYSTEM_APPS = [
+    #Menu Structure 
+    'modules.apps.ModulesConfig',
+    'module_menus.apps.ModuleMenusConfig',
+    'menus.apps.MenusConfig',
+    'submenus.apps.SubmenusConfig',
+    'menu_submenus.apps.MenuSubmenusConfig',
     #User Structure
     'auth_users.apps.AuthUsersConfig',
     'auth_user_profiles.apps.AuthUserProfilesConfig',
@@ -174,7 +180,10 @@ AUTH_USER_MODEL = 'auth_users.AuthUser'
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+if DEBUG == False:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static'),
+else:
+    STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
