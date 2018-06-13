@@ -42,10 +42,8 @@ INSTALLED_APPS = [
 INSTALLED_SYSTEM_APPS = [
     #Menu Structure 
     'modules.apps.ModulesConfig',
-    'module_menus.apps.ModuleMenusConfig',
     'menus.apps.MenusConfig',
     'submenus.apps.SubmenusConfig',
-    'menu_submenus.apps.MenuSubmenusConfig',
     #User Structure
     'auth_users.apps.AuthUsersConfig',
     'auth_user_profiles.apps.AuthUserProfilesConfig',

@@ -7,4 +7,4 @@ from .models import SubMenu
 class SubMenuModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubMenu
-        fields = ['id', 'name', 'url']
+        fields = ['id', 'menu', 'name', 'url', 'order', 'image', 'active']

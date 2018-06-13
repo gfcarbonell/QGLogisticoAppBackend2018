@@ -3,11 +3,12 @@ from django.contrib import admin
 from .models import Menu
 
 
+# ModelAdmin define the model behavior.
 @admin.register(Menu)
-class MenuAdmin(admin.ModelAdmin):
-    list_display = ('name', 'url')
+class MenuModelAdmin(admin.ModelAdmin):
+    list_display = ('module', 'name', 'url', 'order', 'image', 'main','active')
     fieldsets = (
-        ('Menu Info', {'fields':('name', 'url')}),
+        ('Menu Info', {'fields':('module', 'name', 'url', 'order', 'image', 'main', 'active')}),
     )
 
     class Meta:
