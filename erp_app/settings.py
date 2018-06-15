@@ -56,6 +56,7 @@ INSTALLED_SYSTEM_APPS = [
 INSTALLED_SYSTEM_THIRD = [
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'corsheaders', #Comunication between severs
     'preventconcurrentlogins',
 
