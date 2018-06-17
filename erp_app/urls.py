@@ -8,7 +8,7 @@ from rest_framework import routers
 from rest_framework.authtoken import views
 # Users Structure - Views
 from auth_users.views import AuthUserModelViewSet, GroupModelViewSet
-from auth_user_profiles.views import AuthUserProfileModelViewSet
+from auth_user_profiles.views import AuthUserProfileModelViewSet, AuthUserProfileMainMenuModelViewSet
 # Extra Info 
 from contact_information.views import ContactInformationModelViewSet
 from extra_information.views import ExtraInformationModelViewSet
@@ -21,6 +21,7 @@ from submenus.views import SubMenuModelViewSet
 router = routers.DefaultRouter()
 router.register(r'users', AuthUserModelViewSet, base_name='users')
 router.register(r'user-profiles', AuthUserProfileModelViewSet, base_name='user_profiles')
+router.register(r'menu-user-profiles', AuthUserProfileMainMenuModelViewSet, base_name='main_user_profiles')
 router.register(r'groups', GroupModelViewSet, base_name='groups')
 
 # Extra Info 

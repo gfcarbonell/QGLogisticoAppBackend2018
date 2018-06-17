@@ -15,4 +15,11 @@ class AuthUserProfileModelSerializer(serializers.ModelSerializer):
         model = AuthUserProfile
         fields = '__all__'
 
+# Serializers define the API representation.
+class AuthUserProfileMainMenuModelSerializer(serializers.ModelSerializer):
+    auth_user = AuthUserModelSerializer()
+    class Meta:
+        model = AuthUserProfile
+        fields = ['id', 'auth_user', 'photography',]
+
 
