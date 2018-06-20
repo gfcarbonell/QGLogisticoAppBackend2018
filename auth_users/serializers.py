@@ -7,18 +7,36 @@ from .models import AuthUser
 
 # Serializers define the API representation.
 class AuthUserModelSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(style={'input_type': 'password'})
+    confirm_password = serializers.CharField(style={'input_type': 'password'}, allow_blank=False, write_only=True)
+    
+    def validate(self, data):
+        """
+            Checks to be sure that the received password and confirm_password
+            fields are exactly the same
+        """
+        if data['password'] != data.pop('confirm_password'):
+            raise serializers.ValidationError('Las contraseñas no coinciden')
+        return data
+
+    def create(self, validated_data):
+        user = super(AuthUserModelSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+    def update(self, instance, validated_data):
+        user = super(AuthUserModelSerializer, self).update(instance, validated_data)
+        if validated_data['password']:
+            user.set_password(validated_data['password'])
+        user.save()
+        return user   
+
     class Meta:
         model = AuthUser
-        fields = ['id', 'username', 'password', 'email', 'is_active' ]
-        read_only_fields = ['is_staff', 'is_superuser', 'is_active', 'data_joined']
-        write_only_fields = ['password']
-        
-    def restore_object(self, attrs, instance=None):
-        # call set_password on user object. Without this
-        # the password will be stored in plain text.
-        user = super(AuthUserModelSerializer, self).restore_object(attrs, instance)
-        user.set_password(attrs['password'])
-        return user
+        fields = ['id', 'username', 'password', 'confirm_password','email', 'is_active', 'is_superuser' ]
+        read_only_fields = ['is_active', 'is_staff', 'is_superuser', 'data_joined']
+        write_only_fields = ['password', 'confirm_password']
 
 class ContentTypeSerializer(serializers.ModelSerializer):
     class Meta:

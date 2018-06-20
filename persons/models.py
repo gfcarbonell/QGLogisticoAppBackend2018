@@ -21,7 +21,6 @@ class Person(models.Model):
     
     name = models.CharField(
         max_length=100,
-        unique=True,
         db_index=True,
         validators=[
             MinLengthValidator(1),
@@ -31,7 +30,6 @@ class Person(models.Model):
     )
     last_name = models.CharField(
         max_length=100,
-        unique=True,
         db_index=True,
         validators=[
             MinLengthValidator(1),
@@ -41,7 +39,6 @@ class Person(models.Model):
     )
     mother_last_name = models.CharField(
         max_length=100,
-        unique=True,
         db_index=True,
         validators=[
             MinLengthValidator(1),

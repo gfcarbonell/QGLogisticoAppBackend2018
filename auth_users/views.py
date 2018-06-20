@@ -18,7 +18,7 @@ class AuthUserModelViewSet(viewsets.ModelViewSet):
     queryset_detail  = queryset.prefetch_related('groups__permissions')
     permission_classes = (IsAuthenticated,)
 
-    
+
 class GroupModelViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.

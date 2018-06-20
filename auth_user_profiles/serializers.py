@@ -8,9 +8,9 @@ from extra_information.serializers import ExtraInformationModelSerializer
 
 # Serializers define the API representation.
 class AuthUserProfileModelSerializer(serializers.ModelSerializer):
-    auth_user = AuthUserModelSerializer()
-    contact_information = ContactInformationModelSerializer(many=True)
-    extra_information =  ExtraInformationModelSerializer()
+    auth_user = AuthUserModelSerializer(read_only=True)
+    contact_information = ContactInformationModelSerializer(many=True, read_only=True)
+    extra_information =  ExtraInformationModelSerializer(read_only=True)
     class Meta:
         model = AuthUserProfile
         fields = '__all__'
