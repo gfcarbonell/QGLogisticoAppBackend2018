@@ -70,7 +70,7 @@ class Person(models.Model):
         upload_to='images/persons/', 
         null=True, 
         blank=True,
-        default=None, 
+        default='images/defaults/Default-1.png', 
         help_text='Photography | Fotografía'
     ) 
     slug = models.SlugField(

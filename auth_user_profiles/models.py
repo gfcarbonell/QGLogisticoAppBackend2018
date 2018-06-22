@@ -24,11 +24,9 @@ class AuthUserProfile(Person):
         blank=True, 
         help_text='Contact information | Informarción de contacto'
     )
-    extra_information = models.ForeignKey(
+    extra_information = models.ManyToManyField(
         ExtraInformation,
-        null=True,
         blank=True, 
-        on_delete=models.SET_NULL, 
         help_text='Extra information | Informarción extra'
     )
     active = models.BooleanField(

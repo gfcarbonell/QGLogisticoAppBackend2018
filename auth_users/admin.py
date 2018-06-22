@@ -12,7 +12,6 @@ class UsuarioAdmin(UserAdmin):
 	search_fields  = ['username', 'email', 'id']
 	fieldsets = (
         ('User Info', {'fields':('username', 'password', 'email')}),
-
         ('Permissions', {'fields':('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
     )
 

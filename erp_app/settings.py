@@ -51,6 +51,14 @@ INSTALLED_SYSTEM_APPS = [
     'persons.apps.PersonsConfig',
     'contact_information.apps.ContactInformationConfig',
     'extra_information.apps.ExtraInformationConfig',
+    #Entity Structure
+    'entities.apps.EntitiesConfig',
+    'entity_activities.apps.EntityActivitiesConfig',
+    'entity_types.apps.EntityTypesConfig',
+    'entity_classes.apps.EntityClassesConfig',
+    'headquarterses.apps.HeadquartersesConfig',
+    'areas.apps.AreasConfig',
+
 ]
 
 INSTALLED_SYSTEM_THIRD = [

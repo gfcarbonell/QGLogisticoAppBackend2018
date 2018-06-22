@@ -8,7 +8,9 @@ from rest_framework import routers
 from rest_framework.authtoken import views
 # Users Structure - Views
 from auth_users.views import AuthUserModelViewSet, GroupModelViewSet
-from auth_user_profiles.views import AuthUserProfileModelViewSet, AuthUserProfileMainMenuModelViewSet
+from auth_user_profiles.views import AuthUserProfileModelViewSet
+# Entity Structure - Views 
+from entities.views import EntityModelViewSet
 # Extra Info 
 from contact_information.views import ContactInformationModelViewSet
 from extra_information.views import ExtraInformationModelViewSet
@@ -17,13 +19,14 @@ from modules.views import ModuleModelViewSet
 from menus.views import MenuModelViewSet
 from submenus.views import SubMenuModelViewSet 
 
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', AuthUserModelViewSet, base_name='users')
 router.register(r'user-profiles', AuthUserProfileModelViewSet, base_name='user_profiles')
-router.register(r'menu-user-profiles', AuthUserProfileMainMenuModelViewSet, base_name='main_user_profiles')
 router.register(r'groups', GroupModelViewSet, base_name='groups')
-
+# Entity Structure 
+router.register(r'entities', EntityModelViewSet, base_name='entities')
 # Extra Info 
 router.register(r'extra-information', ExtraInformationModelViewSet, base_name='extra_info')
 router.register(r'contact-information', ContactInformationModelViewSet, base_name='contact_info')
