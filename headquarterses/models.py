@@ -53,13 +53,13 @@ class Headquarters(models.Model):
     )
 
     def __str__(self):
-        return self.get_full_name()
+        return self.get_name()
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.slug = slugify(self.get_full_name())
+            self.slug = slugify(self.get_name())
         else:
-            slug = slugify(self.get_full_name())
+            slug = slugify(self.get_name())
             if self.slug != slug:
                 self.slug = slug
         super(Headquarters, self).save(*args, **kwargs)

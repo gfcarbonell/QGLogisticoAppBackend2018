@@ -63,9 +63,6 @@ class Entity(models.Model):
     )
     initials = models.CharField(
         max_length=20,
-        unique=True,
-        null=True, 
-        blank=True,
         db_index=True,
         validators=[
             MinLengthValidator(1),
@@ -150,6 +147,9 @@ class Entity(models.Model):
 
     def is_active(self):
         return self.active
+    
+    def get_full_name(self):
+        return '%s - %s' %(self.get_name(), self.get_initials())
         
     class Meta:
         db_table = 'entities'

@@ -19,14 +19,16 @@ class Area(models.Model):
         on_delete=models.CASCADE, 
         help_text='Headquarters | Sede'
     )
-    nominal_organic_structure_type = models.CharField(
-        choices = NOMINAL_ORGANIC_STRUCTURE_TYPE,
-        max_length=15,
-        help_text='Nominal organic structure Type | Tipo estructura orgánica nominal'
+    dependency = models.ForeignKey(
+        'self', 
+        db_index=True,
+        on_delete=models.CASCADE, 
+        null=True, 
+        blank=True,
+        help_text='Dependency | Dependencia'
     )
     name = models.CharField(
         max_length=100,
-        unique=True,
         db_index=True,
         validators=[
             MinLengthValidator(1),
@@ -36,15 +38,17 @@ class Area(models.Model):
     )
     initials = models.CharField(
         max_length=20,
-        unique=True,
-        null=True, 
-        blank=True,
         db_index=True,
         validators=[
             MinLengthValidator(1),
             MaxLengthValidator(20),
         ], 
         help_text= 'Initials | Iniciales'
+    )
+    nominal_organic_structure_type = models.CharField(
+        choices = NOMINAL_ORGANIC_STRUCTURE_TYPE,
+        max_length=15,
+        help_text='Nominal organic structure Type | Tipo estructura orgánica nominal'
     )
     telephone_annex = models.PositiveSmallIntegerField(
         validators=[
@@ -81,18 +85,21 @@ class Area(models.Model):
     )
 
     def __str__(self):
-        return self.get_name()
+        return self.get_full_name()
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.slug = slugify(self.get_name())
+            self.slug = slugify(self.get_full_name())
         else:
-            slug = slugify(self.get_name())
+            slug = slugify(self.get_full_name())
             if self.slug != slug:
                 self.slug = slug
         super(Area, self).save(*args, **kwargs)
     
     #Setter
+    def set_dependency(self, dependency):
+        self.dependency = dependency
+
     def set_headquarters(self, headquarters):
         self.headquarters = headquarters
 
@@ -129,6 +136,12 @@ class Area(models.Model):
     
     def get_logo(self):
         return self.logo
+    
+    def get_dependency(self):
+        return self.dependency
+    
+    def get_full_name(self):
+        return '%s - %s' %(self.get_headquarters().get_name(), self.get_name())
 
     class Meta:
         db_table = 'areas'
