@@ -5,6 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 from .models import AuthUser
 
 
+
 # Serializers define the API representation.
 class AuthUserModelSerializer(serializers.ModelSerializer):
     password = serializers.CharField(style={'input_type': 'password'})
