@@ -8,7 +8,7 @@ from django.template.defaultfilters import slugify
 class ContactInformation(models.Model):
     '''
         This class:<ContactInformation> contains the contact information of a person or entity.
-        Esta class:<AuthUsuario> contiene la información contacto de una persona o entidad.
+        Esta class:<InformacionContacto> contiene la información contacto de una persona o entidad.
     '''
     email = models.EmailField(
         unique=True,

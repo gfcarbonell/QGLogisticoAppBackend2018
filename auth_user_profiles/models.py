@@ -24,16 +24,10 @@ class AuthUserProfile(Person):
         blank=True, 
         help_text='Contact information | Informarción de contacto'
     )
-    extra_information = models.ForeignKey(
+    extra_information = models.ManyToManyField(
         ExtraInformation,
-        null=True,
         blank=True, 
-        on_delete=models.SET_NULL, 
         help_text='Extra information | Informarción extra'
-    )
-    active = models.BooleanField(
-        default=True, 
-        help_text='Active | Activo'
     )
 
     #Setter
@@ -46,9 +40,6 @@ class AuthUserProfile(Person):
     def set_extra_information(self, extra_information):
         self.extra_information = extra_information 
     
-    def set_active(self, active):
-        self.active = active 
-    
     #Getter
     def get_auth_user(self, auth_user):
         return self.auth_user 
@@ -58,9 +49,6 @@ class AuthUserProfile(Person):
 
     def get_extra_information(self):
         return self.extra_information 
-    
-    def get_active(self):
-        return self.active 
 
     class Meta:
         db_table = 'auth_user_profiles'

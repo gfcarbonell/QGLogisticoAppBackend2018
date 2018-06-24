@@ -1,11 +1,13 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.permissions import IsAuthenticated
 
 from .models import AuthUser
 from django.contrib.auth.models import Group
 from .serializers import AuthUserModelSerializer, GroupModelSerializer
-from rest_framework.permissions import IsAuthenticated
+
 
 
 # ViewSets define the view behavior.
@@ -17,6 +19,10 @@ class AuthUserModelViewSet(viewsets.ModelViewSet):
     serializer_class = AuthUserModelSerializer
     queryset_detail  = queryset.prefetch_related('groups__permissions')
     permission_classes = (IsAuthenticated,)
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
+    search_fields = ('^username', '^email')
+    filter_field = ('active')
+    ordering_fields = ('username', 'email')
 
 
 class GroupModelViewSet(viewsets.ModelViewSet):

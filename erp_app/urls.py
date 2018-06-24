@@ -6,9 +6,21 @@ from django.contrib import admin
 
 from rest_framework import routers
 from rest_framework.authtoken import views
+# Employee Strcuture - Views 
+from employee_types.views import EmployeeTypeModelViewSet
+from employee_positions.views import EmployeePositionModelViewSet 
+
 # Users Structure - Views
 from auth_users.views import AuthUserModelViewSet, GroupModelViewSet
-from auth_user_profiles.views import AuthUserProfileModelViewSet, AuthUserProfileMainMenuModelViewSet
+from auth_user_profiles.views import AuthUserProfileModelViewSet
+# Entity Structure - Views 
+from entity_classes.views import EntityClassModelViewSet
+from entity_types.views import EntityTypeModelViewSet
+from entity_activities.views import EntityActivityModelViewSet
+from entities.views import EntityModelViewSet
+from headquarterses.views import HeadquartersModelViewSet
+from area_types.views import AreaTypeModelViewSet
+from areas.views import AreaModelViewSet
 # Extra Info 
 from contact_information.views import ContactInformationModelViewSet
 from extra_information.views import ExtraInformationModelViewSet
@@ -17,13 +29,24 @@ from modules.views import ModuleModelViewSet
 from menus.views import MenuModelViewSet
 from submenus.views import SubMenuModelViewSet 
 
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
+# Employee Structure 
+router.register(r'employee_types', EmployeePositionModelViewSet, base_name='employee_positions')
+router.register(r'employee_positions', EmployeeTypeModelViewSet, base_name='employee_types')
+# User Structure 
 router.register(r'users', AuthUserModelViewSet, base_name='users')
 router.register(r'user-profiles', AuthUserProfileModelViewSet, base_name='user_profiles')
-router.register(r'menu-user-profiles', AuthUserProfileMainMenuModelViewSet, base_name='main_user_profiles')
 router.register(r'groups', GroupModelViewSet, base_name='groups')
-
+# Entity Structure 
+router.register(r'entity_classes', EntityClassModelViewSet, base_name='entity_classes')
+router.register(r'entity_types', EntityTypeModelViewSet, base_name='entity_types')
+router.register(r'entity_activities', EntityActivityModelViewSet, base_name='entity_activities')
+router.register(r'entities', EntityModelViewSet, base_name='entities')
+router.register(r'headquarterses', HeadquartersModelViewSet, base_name='headquarterses')
+router.register(r'area_types', AreaTypeModelViewSet, base_name='area_types')
+router.register(r'areas', AreaModelViewSet, base_name='areas')
 # Extra Info 
 router.register(r'extra-information', ExtraInformationModelViewSet, base_name='extra_info')
 router.register(r'contact-information', ContactInformationModelViewSet, base_name='contact_info')

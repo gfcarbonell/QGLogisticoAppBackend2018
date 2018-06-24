@@ -1,7 +1,6 @@
 # -*- encoding: utf-8 -*-
 from django.db import models
-from persons.enums import Gender, MaritalStatus, BloodGroup
-
+from persons.enums import Gender, MaritalStatus
 from django.template.defaultfilters import slugify
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
@@ -17,8 +16,6 @@ class Person(models.Model):
     '''
     GENDER_CHOICES = [(gender.value, gender.value) for gender in Gender]
     MARITAL_STATUS_CHOICES = [(marital_status.value, marital_status.value) for marital_status in MaritalStatus]
-    GROUP_CHOICES_BLOOD = [(blood_group.value, blood_group.value) for blood_group in BloodGroup]
-    
     name = models.CharField(
         max_length=100,
         db_index=True,
@@ -59,18 +56,11 @@ class Person(models.Model):
         max_length=9,
         help_text='Marital status | Estado marital o civil'
     )
-    blood_group = models.CharField(
-        choices = GROUP_CHOICES_BLOOD,
-        max_length=9,
-        null=True,
-        blank=True,
-        help_text='Blood group | Grupo sanguíneo'
-    )  
     photography = models.ImageField(
         upload_to='images/persons/', 
         null=True, 
         blank=True,
-        default=None, 
+        default='images/defaults/Default-1.png', 
         help_text='Photography | Fotografía'
     ) 
     slug = models.SlugField(
@@ -114,9 +104,6 @@ class Person(models.Model):
     def set_marital_status(self, marital_status):
         self.marital_status = marital_status
 
-    def set_blood_group(self, blood_group):
-        self.blood_group = blood_group
-
     #Getter 
     def get_name(self):
         return self.name
@@ -135,9 +122,6 @@ class Person(models.Model):
 
     def get_marital_status(self):
         return self.marital_status 
-
-    def get_blood_group(self):
-        return self.blood_group 
 
     class Meta:
         abstract = True
