@@ -35,7 +35,6 @@ class IdentificationDocumentType(models.Model):
             MinValueValidator(0),
             MaxValueValidator(30),
         ], 
-        blank=True,
         default=0,
         help_text='Digits | Dígitos'
     )

@@ -4,12 +4,11 @@ from enum import Enum, unique
 
 @unique
 class InstructionLevel(Enum):
-    NO_LEVEL = 'Sin Nivel'
-    PRESCHOOL = 'Pre Escolar'
+    NO_LEVEL = 'Sin nivel'
+    PRESCHOOL = 'Pre escolar'
     PRIMARY = 'Primaria'
     HIGH_SCHOOL = 'Secundaria'
     HIGHER = 'Superior'
-
 
 @unique
 class BloodGroup(Enum):

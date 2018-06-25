@@ -17,5 +17,5 @@ class EmployeeModelViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
     search_fields = ('^person__name', '^person__last_name', '^person__mother_last_name', '^auth_user__username')
-    filter_fields = ('person__gender', 'person__marital_status', 'blood_group', 'active')
+    filter_fields = ('person__gender', 'person__marital_status', 'active')
     ordering_fields = ('person__last_name', 'person__mother_last_name', 'person__name', 'auth_user__username')

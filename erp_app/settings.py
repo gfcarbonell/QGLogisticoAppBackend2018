@@ -48,6 +48,7 @@ INSTALLED_SYSTEM_APPS = [
     'auth_users.apps.AuthUsersConfig',
     #Person Structure
     'persons.apps.PersonsConfig',
+    'identification_documents.apps.IdentificationDocumentsConfig',
     'identification_document_types.apps.IdentificationDocumentTypesConfig',
     'contact_information.apps.ContactInformationConfig',
     'extra_information.apps.ExtraInformationConfig',

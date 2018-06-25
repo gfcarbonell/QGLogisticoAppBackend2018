@@ -9,6 +9,6 @@ class EmployeeModelSerializer(serializers.ModelSerializer):
         model = Employee
         fields = [
             'id', 'area', 'employee_type', 'employee_position', 'person', 
-            'start_date_contract', 'end_date_contract', 'blood_group', 
+            'start_date_contract', 'end_date_contract', 
             'instruction_level', 'auth_user', 'active'
         ]

@@ -6,7 +6,7 @@ from django.core.validators import RegexValidator, MaxLengthValidator, MinLength
 from areas.models import Area
 from persons.models import Person
 from auth_users.models import AuthUser
-from .enums import InstructionLevel, BloodGroup
+from .enums import InstructionLevel
 from employee_types.models import EmployeeType
 from employee_positions.models import EmployeePosition
 
@@ -15,11 +15,10 @@ from employee_positions.models import EmployeePosition
 # Create your models here.
 class Employee(models.Model):
     '''
-        This class:<Employee> .
-        Esta class:<Empleado> .
+        This class:<Employee> contains the information of an employee.
+        Esta class:<Empleado> contiene la informacion de un empleado.
     '''
     INSTRUCTION_LEVEL_CHOICES = [(instruction_level.value, instruction_level.value) for instruction_level in InstructionLevel]
-    GROUP_CHOICES_BLOOD = [(blood_group.value, blood_group.value) for blood_group in BloodGroup]
     area = models.ForeignKey(
         Area, 
         db_index=True,
@@ -55,14 +54,7 @@ class Employee(models.Model):
         choices = INSTRUCTION_LEVEL_CHOICES,
         max_length=12,
         help_text='Instruction level | Nivel de instrucción'
-    )
-    blood_group = models.CharField(
-        choices = GROUP_CHOICES_BLOOD,
-        max_length=9,
-        null=True,
-        blank=True,
-        help_text='Blood group | Grupo sanguíneo'
-    )  
+    ) 
     auth_user = models.OneToOneField(
         AuthUser, 
         unique=True,

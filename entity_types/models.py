@@ -48,7 +48,7 @@ class EntityType(models.Model):
     )
 
     def __str__(self):
-        return '%s - %s' %(self.get_name(), self.get_initials())
+        return self.get_name()
 
     def save(self, *args, **kwargs):
         if not self.pk:

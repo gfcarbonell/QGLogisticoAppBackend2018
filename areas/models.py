@@ -154,6 +154,6 @@ class Area(models.Model):
 
     class Meta:
         db_table = 'areas'
-        ordering = ['headquarters', 'name', 'initials']
+        ordering = ['headquarters', 'area_type', 'name', 'initials']
         verbose_name = 'Area'
         verbose_name_plural = 'Areas'

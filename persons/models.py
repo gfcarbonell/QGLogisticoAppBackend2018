@@ -8,7 +8,7 @@ from django.core.validators import MaxLengthValidator
 from django.core.validators import MinLengthValidator
 from contact_information.models import ContactInformation
 from extra_information.models import ExtraInformation
-
+from identification_document_types.models import IdentificationDocumentType
 
 # Create your models here.
 class Person(models.Model):
@@ -45,6 +45,10 @@ class Person(models.Model):
         ], 
         help_text='Mother last name | Apellido materno'
     )   
+    identification_document_type = models.ManyToManyField(
+        IdentificationDocumentType,
+        through='identification_documents.IdentificationDocument',
+    )
     birthday = models.DateField(
         help_text='birthday | Fecha nacimiento'
     )

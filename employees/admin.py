@@ -7,12 +7,12 @@ from .models import Employee
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = [
         'area', 'employee_type', 'employee_position', 'person', 
-        'start_date_contract', 'end_date_contract', 'blood_group', 
+        'start_date_contract', 'end_date_contract', 
         'instruction_level', 'auth_user', 'active'
     ]
     fieldsets = (
         ('Employee Info', {'fields':('area', 'employee_type', 'employee_position', 'start_date_contract', 'end_date_contract',)}),
-        ('Person Info', {'fields':('person', 'instruction_level', 'blood_group',)}),
+        ('Person Info', {'fields':('person', 'instruction_level',)}),
         ('User', {'fields':('auth_user',)}),
         ('Permissions', {'fields':('active',)}),
     )
