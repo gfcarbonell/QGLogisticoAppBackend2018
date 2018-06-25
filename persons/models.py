@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.core.validators import MaxLengthValidator
 from django.core.validators import MinLengthValidator
+from contact_information.models import ContactInformation
+from extra_information.models import ExtraInformation
 
 
 # Create your models here.
@@ -63,6 +65,16 @@ class Person(models.Model):
         default='images/defaults/Default-1.png', 
         help_text='Photography | Fotografía'
     ) 
+    contact_information = models.ManyToManyField(
+        ContactInformation,
+        blank=True, 
+        help_text='Contact information | Informarción de contacto'
+    )
+    extra_information = models.ManyToManyField(
+        ExtraInformation,
+        blank=True, 
+        help_text='Extra information | Informarción extra'
+    )
     slug = models.SlugField(
         editable=False, 
         max_length=255,
@@ -103,7 +115,13 @@ class Person(models.Model):
 
     def set_marital_status(self, marital_status):
         self.marital_status = marital_status
-
+    
+    def set_contact_information(self, contact_information):
+        self.contact_information = contact_information 
+    
+    def set_extra_information(self, extra_information):
+        self.extra_information = extra_information 
+    
     #Getter 
     def get_name(self):
         return self.name
@@ -122,6 +140,15 @@ class Person(models.Model):
 
     def get_marital_status(self):
         return self.marital_status 
+    
+    def get_contact_information(self):
+        return self.contact_information
+
+    def get_extra_information(self):
+        return self.extra_information 
 
     class Meta:
-        abstract = True
+        db_table = 'person'
+        ordering = ('last_name', 'mother_last_name', 'name')
+        verbose_name = 'Person'
+        verbose_name_plural = 'Persons - People'

@@ -40,19 +40,15 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_SYSTEM_APPS = [
-    #Menu Structure 
-    'modules.apps.ModulesConfig',
-    'menus.apps.MenusConfig',
-    'submenus.apps.SubmenusConfig',
     #Employee Structure 
     'employee_types.apps.EmployeeTypesConfig',
     'employee_positions.apps.EmployeePositionsConfig',
     'employees.apps.EmployeesConfig',
     #User Structure
     'auth_users.apps.AuthUsersConfig',
-    'auth_user_profiles.apps.AuthUserProfilesConfig',
     #Person Structure
     'persons.apps.PersonsConfig',
+    'identification_document_types.apps.IdentificationDocumentTypesConfig',
     'contact_information.apps.ContactInformationConfig',
     'extra_information.apps.ExtraInformationConfig',
     #Entity Structure
@@ -63,7 +59,6 @@ INSTALLED_SYSTEM_APPS = [
     'headquarterses.apps.HeadquartersesConfig',
     'area_types.apps.AreaTypesConfig',
     'areas.apps.AreasConfig',
-
 ]
 
 INSTALLED_SYSTEM_THIRD = [

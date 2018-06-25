@@ -2,12 +2,19 @@
 from django.contrib import admin
 from .models import Employee
 
-
+    
 @admin.register(Employee)
 class EmployeeAdmin(admin.ModelAdmin):
     list_display = [
-        'area', 'employee_type', 'employee_position', 'auth_user_profile', 
-        'start_date_contract', 'end_date_contract', 'instruction_level'
+        'area', 'employee_type', 'employee_position', 'person', 
+        'start_date_contract', 'end_date_contract', 'blood_group', 
+        'instruction_level', 'auth_user', 'active'
     ]
+    fieldsets = (
+        ('Employee Info', {'fields':('area', 'employee_type', 'employee_position', 'start_date_contract', 'end_date_contract',)}),
+        ('Person Info', {'fields':('person', 'instruction_level', 'blood_group',)}),
+        ('User', {'fields':('auth_user',)}),
+        ('Permissions', {'fields':('active',)}),
+    )
     class Meta:
         model = Employee

@@ -5,8 +5,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.core.validators import MaxLengthValidator
 from django.core.validators import MinLengthValidator
-
-
 from entity_activities.models import EntityActivity
 from entity_classes.models import EntityClass
 from entity_types.models import EntityType

@@ -20,7 +20,6 @@ class AuthUserProfileModelSerializer(serializers.ModelSerializer):
         user_profile, created = AuthUserProfile.objects.update_or_create(auth_user=user, **validated_data)
         return user_profile
      
-
     class Meta:
         model = AuthUserProfile
         fields = ['id', 'last_name', 'mother_last_name', 'name',
