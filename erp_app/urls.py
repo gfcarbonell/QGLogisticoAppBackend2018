@@ -35,8 +35,8 @@ router.register(r'identification-documents', IdentificationDocumentModelViewSet,
 router.register(r'identification-document-types', IdentificationDocumentTypeModelViewSet, base_name='identification_document_types')
 # Employee Structure 
 router.register(r'employees', EmployeeModelViewSet, base_name='employees')
-router.register(r'employee-types', EmployeePositionModelViewSet, base_name='employee_positions')
-router.register(r'employee-positions', EmployeeTypeModelViewSet, base_name='employee_types')
+router.register(r'employee-positions', EmployeePositionModelViewSet, base_name='employee_positions')
+router.register(r'employee-types', EmployeeTypeModelViewSet, base_name='employee_types')
 # User Structure 
 router.register(r'users', AuthUserModelViewSet, base_name='users')
 #router.register(r'user-profiles', AuthUserProfileModelViewSet, base_name='user_profiles')

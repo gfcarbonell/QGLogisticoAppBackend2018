@@ -79,6 +79,10 @@ class Entity(models.Model):
         default=True, 
         help_text='Active | Activo'
     )
+    main = models.BooleanField(
+        default=False, 
+        help_text='Main | Principal'
+    )
     slug = models.SlugField(
         editable=False, 
         max_length=255,
@@ -122,6 +126,9 @@ class Entity(models.Model):
     def set_active(self, active):
         self.active = active 
 
+    def set_main(self, main):
+        self.main =  main 
+
     def get_entity_class(self):
         return self.entity_class 
     
@@ -145,6 +152,9 @@ class Entity(models.Model):
 
     def is_active(self):
         return self.active
+
+    def is_main(self):
+        return self.main
     
     def get_full_name(self):
         return '%s - %s' %(self.get_name(), self.get_initials())

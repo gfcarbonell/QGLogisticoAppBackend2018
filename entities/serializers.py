@@ -14,4 +14,4 @@ class EntityModelSerializer(serializers.ModelSerializer):
     entity_activity = EntityActivityModelSerializer()
     class Meta:
         model = Entity
-        fields = ['id', 'entity_class', 'entity_type', 'entity_activity', 'name', 'slogan', 'initials', 'logo', 'active']
+        fields = ['id', 'entity_class', 'entity_type', 'entity_activity', 'name', 'slogan', 'initials', 'logo', 'active', 'main']

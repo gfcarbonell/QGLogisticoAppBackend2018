@@ -17,5 +17,5 @@ class EntityModelViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
     search_fields = ('^name', '^initials')
-    filter_fields = ('entity_class', 'entity_type', 'entity_activity')
+    filter_fields = ('entity_class', 'entity_type', 'entity_activity', 'main')
     ordering_fields = ('name', 'initials')

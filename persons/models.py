@@ -71,12 +71,14 @@ class Person(models.Model):
     ) 
     contact_information = models.ManyToManyField(
         ContactInformation,
-        blank=True, 
+        blank=True,
+        null=True, 
         help_text='Contact information | Informarción de contacto'
     )
     extra_information = models.ManyToManyField(
         ExtraInformation,
         blank=True, 
+        null=True, 
         help_text='Extra information | Informarción extra'
     )
     slug = models.SlugField(
