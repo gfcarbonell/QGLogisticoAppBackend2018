@@ -1,15 +1,19 @@
 # -*- encoding: utf-8 -*-
 from rest_framework import serializers
 from .models import Employee
+from areas.serializers import AreaModelSerializer 
 from auth_users.serializers import AuthUserModelSerializer 
 from persons.serializers import PersonModelSerializer 
-
-
+from employee_types.serializers import EmployeeTypeModelSerializer
+from employee_positions.serializers import EmployeePositionModelSerializer
 
 # Serializers define the API representation.
 class EmployeeModelSerializer(serializers.ModelSerializer):
+    area = AreaModelSerializer()
     auth_user = AuthUserModelSerializer()
     person = PersonModelSerializer()
+    employee_position = EmployeePositionModelSerializer()
+    employee_type = EmployeeTypeModelSerializer()
 
     def create(self, validated_data):
         person_data = validated_data.pop('person')
